@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JURISDICTION</title>
+<style>
+:root {
+    --bg: #0b0b0d;
+    --panel: #131316;
+    --panel-hover: #19191d;
+    --red: #e3343d;
+    --text: #f2f2f2;
+    --muted: #929298;
+    --border: #29292e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, 90%); margin: auto; }
+
+.navbar {
+    min-height: 74px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(11, 11, 13, 0.97);
+}
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.logo {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+.logo span { color: var(--red); }
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.nav-links a {
+    color: var(--muted);
+    font-size: 13px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: white; }
+
+.nav-button, .button {
+    display: inline-block;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: 0.2s;
+    text-align: center;
+}
+.nav-button {
+    border: 1px solid var(--border);
+    padding: 9px 17px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.nav-button:hover {
+    border-color: var(--red);
+    color: var(--red);
+}
+.button {
+    padding: 12px 20px;
+    font-size: 13px;
+}
+.button-red { background: var(--red); color: white; }
+.button-red:hover { background: #c92832; }
+.button-dark {
+    border: 1px solid var(--border);
+    color: white;
+}
+.button-dark:hover {
+    background: var(--panel-hover);
+    border-color: #555;
+}
+
+.hero {
+    min-height: 540px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(
+        ellipse at 75% 50%,
+        rgba(227, 52, 61, 0.07),
+        transparent 45%
+    );
+}
+.hero-content { max-width: 720px; padding: 90px 0; }
+.eyebrow {
+    color: var(--red);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.hero h1 {
+    font-size: clamp(42px, 7vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 23px;
+}
+.hero p {
+    max-width: 550px;
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+section {
+    padding: 85px 0;
+    border-bottom: 1px solid var(--border);
+}
+.section-heading { margin-bottom: 35px; }
+.section-heading h2 { font-size: 29px; margin-bottom: 7px; }
+.section-heading p { color: var(--muted); font-size: 14px; }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 9px;
+    transition: 0.2s;
+}
+.card:hover {
+    background: var(--panel-hover);
+    border-color: #444;
+}
+.card h3 { font-size: 16px; margin-bottom: 9px; }
+.card p { color: var(--muted); font-size: 13px; }
+.game-name {
+    color: var(--red);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.update-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 25px;
+    margin-bottom: 15px;
+}
+.update-label {
+    color: var(--red);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+.update-card h3 { font-size: 17px; margin-bottom: 8px; }
+.update-card p, .update-card li {
+    color: var(--muted);
+    font-size: 13px;
+}
+.update-card ul { padding-left: 19px; margin-top: 12px; }
+.update-card li { margin: 5px 0; }
+.update-meta {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 15px;
+}
+.version {
+    color: var(--red);
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.empty-state { color: var(--muted); font-size: 13px; }
+
+.about-content { max-width: 700px; }
+.about-content p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+footer {
+    padding: 30px 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 750px) {
+    .nav-content { flex-wrap: wrap; padding: 12px 0; }
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+    }
+    .nav-links a { font-size: 11px; }
+    .nav-button { padding: 8px 10px; font-size: 10px; }
+    .grid { grid-template-columns: 1fr; }
+    .hero { min-height: 470px; }
+    .hero h1 { font-size: 46px; }
+    section { padding: 65px 0; }
+}
+@media (max-width: 420px) {
+    .nav-links { gap: 7px; }
+    .nav-links a { font-size: 9px; }
+    .nav-button { padding: 6px 7px; font-size: 9px; }
+    .logo { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container nav-content">
+        <a href="index.html" class="logo">JURISDICTION<span>.</span></a>
+
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#games">Games</a>
+            <a href="#updates">Updates</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <a href="downloads.html" class="nav-button">DOWNLOADS</a>
+    </div>
+</header>
+
+<main>
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="eyebrow">Gaming optimization project</div>
+                <h1>GET MORE<br>FROM YOUR PC.</h1>
+                <p>
+                    JURISDICTION is a Windows optimization project
+                    focused on gaming performance, system settings,
+                    and keeping everything in one place.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#features" class="button button-red">Explore features</a>
+                    <a href="downloads.html" class="button button-dark">View downloads</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="features">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">What we're working on</div>
+                <h2>Features</h2>
+                <p>The tools planned for JURISDICTION.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Hardware Detection</h3>
+                    <p>View your CPU, GPU, memory, display, and system information.</p>
+                </div>
+                <div class="card">
+                    <h3>GPU Settings</h3>
+                    <p>Manage supported graphics settings for your hardware.</p>
+                </div>
+                <div class="card">
+                    <h3>Game Profiles</h3>
+                    <p>Keep game-specific settings and configurations organized.</p>
+                </div>
+                <div class="card">
+                    <h3>Windows Tools</h3>
+                    <p>Access useful system settings and carefully selected optimizations.</p>
+                </div>
+                <div class="card">
+                    <h3>Performance Tests</h3>
+                    <p>Compare benchmark results and monitor performance.</p>
+                </div>
+                <div class="card">
+                    <h3>Configuration Tools</h3>
+                    <p>Edit, validate, import, and export supported configuration files.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="games">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">Supported games</div>
+                <h2>Game Profiles</h2>
+                <p>Game-specific tools planned for the project.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="game-name">01 / ROBLOX</div>
+                    <h3>Roblox</h3>
+                    <p>Supported configuration tools and performance settings.</p>
+                </div>
+                <div class="card">
+                    <div class="game-name">02 / MINECRAFT</div>
+                    <h3>Minecraft</h3>
+                    <p>Launcher, game configuration, and performance profile management.</p>
+                </div>
+                <div class="card">
+                    <div class="game-name">03 / GEOMETRY DASH</div>
+                    <h3>Geometry Dash</h3>
+                    <p>Game settings and configuration management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="updates">
+        <div class="container">
+            <div class="section-heading">
+                <div class="eyebrow">Project information</div>
+                <h2>Updates</h2>
+                <p>Version history and development notes.</p>
+            </div>
+
+            <div id="version-updates">
+                <p class="empty-state">Loading updates...</p>
+            </div>
+
+            <div id="developer-notes">
+                <p class="empty-state">Loading developer notes...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="eyebrow">About the project</div>
+                <h2>Built for gamers.</h2>
+                <p>
+                    JURISDICTION is an independent project focused on
+                    making PC gaming tools easier to access and manage.
+                </p>
+                <p>
+                    The goal is simple: useful tools, clear settings,
+                    and changes that users can understand and control.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <div>© 2026 JURISDICTION</div>
+        <div>Independent gaming optimization project.</div>
+    </div>
+</footer>
+
+<script>
+async function loadUpdates() {
+    const versionsContainer = document.getElementById("version-updates");
+    const notesContainer = document.getElementById("developer-notes");
+
+    try {
+        const response = await fetch("./updates.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("Could not load updates.json");
+
+        const data = await response.json();
+        const updates = Array.isArray(data.updates) ? data.updates : [];
+        const devNotes = Array.isArray(data.devNotes) ? data.devNotes : [];
+
+        versionsContainer.innerHTML =
+            '<div class="update-card"><div class="update-label">Version history</div>' +
+            (updates.length ? updates.map(update => `
+                <article style="padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid var(--border)">
+                    <div class="version">${escapeHTML(update.version || "Unversioned")}</div>
+                    <h3>${escapeHTML(update.title || "Update")}</h3>
+                    ${Array.isArray(update.notes) && update.notes.length
+                        ? `<ul>${update.notes.map(note => `<li>${escapeHTML(note)}</li>`).join("")}</ul>`
+                        : `<p>No patch notes added yet.</p>`}
+                    <div class="update-meta">${escapeHTML(update.date || "")}${update.type ? " · " + escapeHTML(update.type) : ""}</div>
+                </article>
+            `).join("") : '<p class="empty-state">No releases have been posted yet.</p>') +
+            '</div>';
+
+        notesContainer.innerHTML =
+            '<div class="update-card"><div class="update-label">Developer notes</div>' +
+            (devNotes.length ? devNotes.map(note => `
+                <article style="padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--border)">
+                    <h3>${escapeHTML(note.title || "Development note")}</h3>
+                    <p>${escapeHTML(note.text || "")}</p>
+                    <div class="update-meta">${escapeHTML(note.date || "")}</div>
+                </article>
+            `).join("") : '<p class="empty-state">Development notes will be added here.</p>') +
+            '</div>';
+    } catch (error) {
+        versionsContainer.innerHTML =
+            '<div class="update-card"><div class="update-label">Version history</div><p class="empty-state">Updates could not be loaded. Make sure updates.json is beside index.html.</p></div>';
+        notesContainer.innerHTML = "";
+        console.error(error);
+    }
+}
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[character]);
+}
+
+loadUpdates();
+</script>
+</body>
+</html>
+
+

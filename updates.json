@@ -1,0 +1,23 @@
+
+{
+  "updates": [
+    {
+      "version": "Development",
+      "title": "Development in progress",
+      "date": "Coming soon",
+      "type": "Estimated date for beta is December 12th 2026",
+      "notes": [
+        "JURISDICTION is currently in early development.",
+        "The website and core tool plans are being organized.",
+        "Release notes will be posted here when a build is ready."
+      ]
+    }
+  ],
+  "devNotes": [
+    {
+      "title": "Developer's note.",
+      "text": "honestly dont take alot of shi seriously but this can be great, il keep posting more of these",
+      "date": "Development update"
+    }
+  ]
+}
